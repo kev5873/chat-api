@@ -1,0 +1,29 @@
+{
+  "name": "chat-api",
+  "version": "1.0.0",
+  "description": "a small restful chat API",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --ignore lib --exec babel-node src",
+    "test": "eslint src && jest --coverage"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.5.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "jest": "^20.0.4",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "compression": "^1.6.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.3"
+  }
+}
