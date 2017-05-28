@@ -5,25 +5,38 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --ignore lib --exec babel-node src",
+    "start": "yarn dev:start",
+    "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src",
+    "dev:wds": "webpack-dev-server --progress",
     "test": "eslint src && jest --coverage"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
     "babel-jest": "^20.0.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-flow-react-proptypes": "^3.0.0",
     "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.0.1",
     "jest": "^20.0.4",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "body-parser": "^1.17.2",
     "compression": "^1.6.2",
     "express": "^4.15.3",
-    "mongoose": "^4.10.3"
+    "mongoose": "^4.10.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "next",
+    "superagent": "^3.5.2"
   }
 }

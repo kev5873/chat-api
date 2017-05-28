@@ -20,5 +20,6 @@ app.use('/thread', thread)
 
 app.listen(WEB_PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server running on port ${WEB_PORT} ${IS_PROD ? '(production)' : '(development)'}.`)
+  console.log(`Server running on port ${WEB_PORT} ${IS_PROD ? '(production)' :
+  '(development).\nKeep "yarn dev:wds" running in an other terminal'}.`)
 })
