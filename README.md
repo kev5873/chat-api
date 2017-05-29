@@ -17,9 +17,9 @@ Installation
 3. Make a directory for MongoDB
 	- `mkdir mongostore`
 	- `mongod --dbpath mongostore/`
-	- MongoDB should now be running
-4. `yarn dev:wds` - to start webpack hot reloader
-5. `yarn start` - start express and react frontend
+	- MongoDB should now be running (Keep in terminal)
+4. `yarn dev:wds` - to start webpack hot reloader (Do this in a separate terminal)
+5. `yarn start` - start express and react frontend (Do this in a separate terminal)
 6. Servers should be loaded
 	- Visit `localhost:8000` to view front end
 	- API calls are made on `localhost:8000/thread`
@@ -27,6 +27,7 @@ Installation
 Test
 ---
 
+1. Ensure MongoDB is running.  Do step 3 above if not.
 1. `yarn test`
 
 Frontend Documentation

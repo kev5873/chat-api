@@ -7,4 +7,5 @@ export const IS_PROD = process.env.NODE_ENV === 'production'
 export const WDS_PORT = 7000
 
 export const MONGO_URL = 'mongodb://localhost/chatAPI'
-export const MONGO_URL_TEST = 'mongodb://localhost/chatAPI-test'
+export const MONGO_NAMESPACE_TEST = 'chatAPI-test'
+export const MONGO_URL_TEST = `mongodb://localhost/${MONGO_NAMESPACE_TEST}`

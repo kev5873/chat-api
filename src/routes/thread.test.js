@@ -7,7 +7,8 @@ beforeAll(() => {
   mongoose.connect(MONGO_URL_TEST)
 })
 
-afterAll(() => {
+afterAll(async () => {
+  await mongoose.connection.collections.threads.drop()
   mongoose.disconnect()
 })
 
