@@ -29,6 +29,11 @@ Test
 
 1. `yarn test`
 
+Frontend Documentation
+---
+
+Start a new conversation and grab the chat ID.  Give the chat ID to other user, have them enter the ID in to join and begin chatting.
+
 API Documentation
 ---
 * `POST /thread`
