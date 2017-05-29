@@ -5,3 +5,6 @@ export const STATIC_PATH = '/static'
 export const WEB_PORT = process.env.PORT || 8000
 export const IS_PROD = process.env.NODE_ENV === 'production'
 export const WDS_PORT = 7000
+
+export const MONGO_URL = 'mongodb://localhost/chatAPI'
+export const MONGO_URL_TEST = 'mongodb://localhost/chatAPI-test'

@@ -27,7 +27,6 @@ class App extends Component {
       .post('//localhost:8000/thread')
       .set('Accept', 'application/json')
       .end( (err, res) => {
-        console.log(res.body)
         const { timestamp, _id } = res.body
         this.setState({ timestamp, chatId: _id, conversation: true })
       })
@@ -38,9 +37,12 @@ class App extends Component {
       .get(`//localhost:8000/thread/${this.state.chatId}`)
       .set('Accept', 'application/json')
       .end( (err, res) => {
-        console.log(res.body)
-        const { timestamp, _id, messages } = res.body
-        this.setState({ timestamp, chatId: _id, messages: messages, conversation: true })
+        if (err) {
+          alert(res.body.error)
+        } else {
+          const { timestamp, _id, messages } = res.body
+          this.setState({ timestamp, chatId: _id, messages: messages, conversation: true })
+        }
       })
   }
 
@@ -49,8 +51,8 @@ class App extends Component {
     let showElements = []
     if (!conversation) {
       showElements.push(
-        <div onClick={this.createNew}> Click here to start a new conversation </div>,
-        <div style={{ marginTop: '15px' }}>
+        <div onClick={this.createNew} key="startNew"> Click here to start a new conversation </div>,
+        <div style={{ marginTop: '15px' }} key="joinExisting">
           Enter Chat ID: <input type="text" value={this.state.chatId} onChange={this.handleChange} />
           <span onClick={this.joinExisting}> Join conversation </span>
         </div>,

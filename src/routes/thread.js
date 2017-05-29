@@ -5,10 +5,7 @@ const router = express.Router()
 
 // Create a new thread
 router.post('/', async (req, res) => {
-  const newThread = new Thread({
-    timestamp: new Date()
-  });
-  const response = await newThread.save()
+  const response = await Thread.createNew()
   res.json(response)
 })
 
@@ -16,12 +13,9 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   const { offset = 0, limit = 10 } = req.query
-  const response = await Thread.findOne(
-    { _id: id },
-    { messages: { $slice: [parseInt(offset, 10), parseInt(limit, 10)] } },
-  )
+  const response = await Thread.getById(id, offset, limit)
   if (!response) {
-    res.status(404).json({error: 'Not found'})
+    res.status(404).json({ error: 'Not found' })
   }
   res.json(response)
 })
@@ -29,9 +23,9 @@ router.get('/:id', async (req, res) => {
 // Delete a thread
 router.delete('/:id', async (req, res) => {
   const { id } = req.params
-  const response = await Thread.findByIdAndRemove(id)
+  const response = await Thread.deleteById(id)
   if (!response) {
-    res.status(404).json({error: 'Not found'})
+    res.status(404).json({ error: 'Not found' })
   }
   res.json(response)
 })
@@ -39,22 +33,10 @@ router.delete('/:id', async (req, res) => {
 // Add a message to the thread.
 router.post('/:id', async (req, res) => {
   const { id } = req.params
-  const { user, timestamp, message } = req.body
-  const response = await Thread.findByIdAndUpdate(id,
-    { "$push":
-      { "messages":
-        {
-          "$each": [{
-            user,
-            message,
-            timestamp: new Date(),
-          }],
-          "$position" : 0
-        }
-      }
-    })
+  const { user, message } = req.body
+  const response = await Thread.postMessage(id, user, message)
   if (!response) {
-    res.status(404).json({error: 'Not found'})
+    res.status(404).json({ error: 'Not found' })
   }
   res.json(response)
 })

@@ -1,4 +1,4 @@
-import { APP_CONTAINER_CLASS, APP_NAME, STATIC_PATH, WEB_PORT, WDS_PORT, IS_PROD } from './config'
+import { APP_CONTAINER_CLASS, STATIC_PATH, WDS_PORT, IS_PROD } from './config'
 
 const renderApp = (title, reactElement) =>
 `<!doctype html>
